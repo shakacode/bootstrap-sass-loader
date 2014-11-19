@@ -29,6 +29,11 @@ To use the complete bootstrap package including styles and scripts with the defa
 require("bootstrap-sass-loader");
 ```
 
+The disadvantage to using this setup is that you can't:
+
+1. Customize the bootstrap variables: [Bootstrap Customization](http://getbootstrap.com/customize/)
+2. You can't use the bootstrap variables for your own sass stylesheets.
+
 ### 1.b Customized Bootstrap
 
 1. Copy the file `bootstrap-sass.config.js` to your project. You will specify the file path in the `require` statement.
