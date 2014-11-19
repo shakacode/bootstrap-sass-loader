@@ -49,10 +49,6 @@ var bootstrapSassPath = require("./bootstrapSassPath");
 module.exports = function (content) {
   this.cacheable(true);
   var config = this.exec(content, this.resourcePath);
-  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-  console.log("config is %O", config);
-  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-
   var bootstrapCustomizations = config.bootstrapCustomizations;
   var pathToBootstrapSass = bootstrapSassPath.getPath();
   var start =

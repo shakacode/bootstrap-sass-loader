@@ -1,11 +1,8 @@
 module.exports = function () {};
 module.exports.pitch = function (remainingRequest) {
-  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-  console.log("remainingRequest = " + remainingRequest);
-  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-
   if (!remainingRequest || remainingRequest == null || remainingRequest == "") {
-    var msg = "You specified the bootstrap-sass-loader with no configuration file. Please specify the configuration file, like: 'bootstrap-sass!./bootstrap-sass.config.js' or remove use something like require('bootstrap-sass-loader').";
+    var msg = "You specified the bootstrap-sass-loader with no configuration file. Please specify the configuration "
+      + "file, like: 'bootstrap-sass!./bootstrap-sass.config.js' or use require('bootstrap-sass-loader').";
     console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
     console.log(msg);
     console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");

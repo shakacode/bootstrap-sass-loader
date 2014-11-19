@@ -24,10 +24,6 @@ module.exports.pitch = function (configPath) {
   return scripts.filter(function (script) {
     return config.scripts[script];
   }).map(function (script) {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    console.log("");
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
     return "require(" + JSON.stringify(path.join(pathToBootstrapSass, "javascripts", "bootstrap", script)) + ");";
   }).join("\n");
 };
