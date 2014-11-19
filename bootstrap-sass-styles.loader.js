@@ -43,14 +43,18 @@ var partials = [
   "responsive-utilities"
 ];
 var path = require("path");
-var pathToBootstrapSass = require.resolve("bootstrap-sass");
 var fs = require('fs');
-var path = require('path');
+var bootstrapSassPath = require("./bootstrapSassPath");
 
 module.exports = function (content) {
   this.cacheable(true);
   var config = this.exec(content, this.resourcePath);
+  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+  console.log("config is %O", config);
+  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+
   var bootstrapCustomizations = config.bootstrapCustomizations;
+  var pathToBootstrapSass = bootstrapSassPath.getPath();
   var start =
     "@import          \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
     "$icon-font-path: \""+ path.join(pathToBootstrapSass, "fonts/bootstrap") + "\";\n";
@@ -58,7 +62,7 @@ module.exports = function (content) {
     this.addDependency(bootstrapCustomizations);
     start += "@import          \"" + bootstrapCustomizations + "\";\n";
   }
-  source = start + partials.filter(function (partial) {
+  var source = start + partials.filter(function (partial) {
     return config.styles[partial];
   }).map(function (partial) {
     return "@import \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap", partial) + "\";";
@@ -68,9 +72,5 @@ module.exports = function (content) {
     this.addDependency(mainSass);
     source += "\n@import          \"" + mainSass + "\";\n";
   }
-
-  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-  console.log("source is:\n" + source);
-  console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
   return source;
 };

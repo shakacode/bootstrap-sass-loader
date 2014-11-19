@@ -1,53 +1,37 @@
 bootstrap-sass-loader
 =================
 
-Bootstrap configuration and loading package for webpack, using `bootstrap-sass`.
+Bootstrap configuration and loading package for webpack, using the npm packages `bootstrap-sass` and `sass-loader`.
+
+If you're looking for the less version, see [boostrap-webpack](https://github.com/bline/bootstrap-webpack).
 
 In a nutshell:
 
-1. You've got the sass-loader to process sass files.
-2. The npm bootstrap-sass package places the bootstrap files in /node_modules/bootstrap-sass/assets
+1. You've got the sass-loader to process Sass files to CSS.
+2. The npm bootstrap-sass package places the bootstrap files in `/node_modules/bootstrap-sass/assets`
 3. You could simply create your own sass file to pick up bootstrap from this location, and you could require the js
-   files here for the Bootstrap JavaScript code.
+   files here for the Bootstrap JavaScript code. See the (sass-loader)[https://github.com/jtangelder/sass-loader] for
+   instructions on configuring the directories.
 4. Or you could use this loader and load a js file that configures Bootstrap.
 
 You can find an example of using this:
 
-https://github.com/justin808/bootstrap-sass-loader-example
+[justin808/bootstrap-sass-loader-example](https://github.com/justin808/bootstrap-sass-loader-example)
 
 Usage
 -----
 
-Bootstrap use some fonts. You need to configure the correct loaders in your `webpack.config.js`. Example:
-
-``` javascript
-module.exports = {
-  module: {
-    loaders: [
-      // the url-loader uses DataUrls.
-      // the file-loader emits files.
-      { test: /\.woff$/,   loader: "url-loader?limit=10000&minetype=application/font-woff" },
-      { test: /\.ttf$/,    loader: "file-loader" },
-      { test: /\.eot$/,    loader: "file-loader" },
-      { test: /\.svg$/,    loader: "file-loader" }
-    ]
-  }
-};
-```
-
-### Complete Bootstrap
+### 1.a Complete Bootstrap
 
 To use the complete bootstrap package including styles and scripts with the default settings:
 
 ``` javascript
-require("bootstrap-sass-webpack");
+require("bootstrap-sass-loader");
 ```
 
+### 1.b Customized Bootstrap
 
-### Customized Bootstrap
-
-1. Copy the file `bootstrap-sass.config.js` to your project. For these instructions, we'll assume that it's a peer file
-   of your webpack.config file.
+1. Copy the file `bootstrap-sass.config.js` to your project. You will specify the file path in the `require` statement.
 2. Open that file to customize the location of a file for any Boostrap variable overrides, and your main Sass file that
    might depend on Bootstrap variables. The location of these two files are optional. You may also remove Sass or Js
    modules that you don't need.
@@ -67,7 +51,8 @@ module.exports = {
 
 #### `bootstrap-sass.config.js`
 
-Example:
+Here's a sample configuration file. The file included in the [bootstrap-sass-loader git repo](https://github.com/jtangelder/sass-loader)
+has many more options.
 
 ``` javascript
 module.exports = {
@@ -90,7 +75,31 @@ module.exports = {
 };
 ```
 
-Based on:
-* bline/bootstrap-webpack
+### Font Configuration
+Bootstrap use some fonts. You need to configure the correct loaders in your `webpack.config.js`. Example:
+
+``` javascript
+module.exports = {
+  module: {
+    loaders: [
+      // **IMPORTANT** This is needed so that each bootstrap js file required by
+      // bootstrap-webpack has access to the jQuery object
+      { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
+
+      // Needed for the css-loader when [bootstrap-webpack](https://github.com/bline/bootstrap-webpack)
+      // loads bootstrap's css.
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&minetype=application/font-woff" },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
+    ]
+  }
+};
+```
+
+
+
+### Based on:
+* [boostrap-webpack](https://github.com/bline/bootstrap-webpack).
 * DylanLukes/bootstrap-sass-webpack
 
