@@ -3,7 +3,9 @@ bootstrap-sass-loader
 
 Bootstrap configuration and loading package for webpack, using the npm packages `bootstrap-sass` and `sass-loader`.
 
-If you're looking for the less version, see [boostrap-webpack](https://github.com/bline/bootstrap-webpack).
+If you're looking for the less version, see [boostrap-webpack](https://github.com/bline/bootstrap-webpack). This project
+is based on that version for less, with some minor differences, the main one being how the configuration file specifies
+two sass files for customization.
 
 In a nutshell:
 
