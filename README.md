@@ -20,6 +20,15 @@ You can find an example of using this:
 
 [justin808/bootstrap-sass-loader-example](https://github.com/justin808/bootstrap-sass-loader-example)
 
+Boostrap Version
+---
+The version of sass-bootrap used is listed in peerDependencies, so you should be able to use whichever version you like.
+
+Simply specify that version of `sass-bootrap` in your `package.json`, like this:
+
+    "bootstrap-sass": "~3.3.1"
+
+
 Usage
 -----
 

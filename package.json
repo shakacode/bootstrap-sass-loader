@@ -2,7 +2,7 @@
   "name": "bootstrap-sass-loader",
   "description": "bootstrap-sass package for webpack",
   "main": "index.js",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "loader": "index.loader.js",
   "keywords": [
     "bootstrap",
@@ -20,6 +20,7 @@
     "sass-loader": "~0.3.1",
     "style-loader": "~0.8.2"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/justin808/bootstrap-sass-loader.git"
