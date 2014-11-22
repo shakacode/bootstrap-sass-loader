@@ -10,7 +10,7 @@ two sass files for customization.
 In a nutshell:
 
 1. You've got the sass-loader to process Sass files to CSS.
-2. The npm bootstrap-sass package places the bootstrap files in `/node_modules/bootstrap-sass/assets`
+2. The npm bootstrap-sass package places the bootstrap files in `/node_modules/bootstrap-sass/assets`.
 3. You could simply create your own sass file to pick up bootstrap from this location, and you could require the js
    files here for the Bootstrap JavaScript code. See the (sass-loader)[https://github.com/jtangelder/sass-loader] for
    instructions on configuring the directories.
@@ -19,6 +19,9 @@ In a nutshell:
 You can find an example of using this:
 
 [justin808/bootstrap-sass-loader-example](https://github.com/justin808/bootstrap-sass-loader-example)
+
+Note, `bootstrap-sass` must be installed locally inside of `../node_modules` or a parent directories `node_modules`
+directory relative to the loaded config file.
 
 Boostrap Version
 ---
@@ -67,13 +70,14 @@ module.exports = {
 
 #### `bootstrap-sass.config.js`
 
-Here's a sample configuration file. The file included in the [bootstrap-sass-loader git repo](https://github.com/jtangelder/sass-loader)
+Here's a sample configuration file. The file included in the [bootstrap-sass-loader git repo](https://github.com/justin808/bootstrap-sass-loader/blob/master/bootstrap-sass.config.js)
 has many more options.
 
 ``` javascript
 module.exports = {
   bootstrapCustomizations: "./bootstrap-customizations.scss",
   mainSass: "./main.scss",
+  styleLoader: "style-loader!css-loader!sass-loader"; // see example for the ExtractTextPlugin
   scripts: {
     // add every bootstrap script you need
     'transition': true

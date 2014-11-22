@@ -1,6 +1,17 @@
 module.exports = {
   bootstrapCustomizations: "./bootstrap-customizations.scss",
   mainSass: "./main.scss",
+
+  // Default for the style loading
+  styleLoader: "style-loader!css-loader!sass-loader",
+  //
+  // If you want to use the ExtractTextPlugin
+  //   and you want compressed
+  //     styleLoader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader"),
+  //
+  // If you want expanded CSS
+  //   styleLoader: ExtractTextPlugin.extract("style-loader", "css-loader!sass?outputStyle=expanded"),
+
   scripts: {
     'transition': true,
     'alert': true,
