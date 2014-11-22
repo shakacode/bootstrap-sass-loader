@@ -77,7 +77,7 @@ has many more options.
 module.exports = {
   bootstrapCustomizations: "./bootstrap-customizations.scss",
   mainSass: "./main.scss",
-  styleLoader: "style-loader!css-loader!sass-loader"; // see example for the ExtractTextPlugin
+  styleLoader: "style-loader!css-loader!sass-loader", // see example for the ExtractTextPlugin
   scripts: {
     // add every bootstrap script you need
     'transition': true

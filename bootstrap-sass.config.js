@@ -1,4 +1,6 @@
 module.exports = {
+  verbose: false, // Set to true to show diagnostic information
+
   bootstrapCustomizations: "./bootstrap-customizations.scss",
   mainSass: "./main.scss",
 
