@@ -45,29 +45,38 @@ var partials = [
 var path = require("path");
 var fs = require('fs');
 var bootstrapSassPath = require("./bootstrapSassPath");
+var logger = require("./logger");
 
 module.exports = function (content) {
   this.cacheable(true);
   var config = this.exec(content, this.resourcePath);
-
   var bootstrapCustomizations = config.bootstrapCustomizations;
-  var pathToBootstrapSass = bootstrapSassPath.getPath();
+  var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
+  logger.verbose(config, "bootstrap-sass location: %s", pathToBootstrapSass);
+
   var start =
     "@import          \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
     "$icon-font-path: \""+ path.join(pathToBootstrapSass, "fonts/bootstrap") + "\";\n";
+
   if (bootstrapCustomizations && fs.existsSync(bootstrapCustomizations)) {
+    logger.verbose(config, "bootstrapCustomizations: %s", bootstrapCustomizations);
     this.addDependency(bootstrapCustomizations);
     start += "@import          \"" + bootstrapCustomizations + "\";\n";
   }
+
   var source = start + partials.filter(function (partial) {
     return config.styles[partial];
   }).map(function (partial) {
     return "@import \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap", partial) + "\";";
   }).join("\n");
+
   var mainSass = config.mainSass;
+
   if (mainSass && fs.existsSync(mainSass)) {
+    logger.verbose(config, "mainSass: %s", mainSass);
     this.addDependency(mainSass);
     source += "\n@import          \"" + mainSass + "\";\n";
   }
+
   return source;
 };
