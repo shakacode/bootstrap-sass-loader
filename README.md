@@ -117,7 +117,21 @@ module.exports = {
 };
 ```
 
+## extract-text-plugin Notes
+* If you don't run webpack like this, you might get a very obscure error:
+```
+PATH=$(npm bin):$PATH webpack --config webpack.rails.config.js
+```
 
+Alternate, you can put $(npm bin) in your path. Basically if you run `type webpack` and the path is your global one, then
+you may have issues.
+
+* You can configure the output file of the created CSS file by using a relative path to the output directory. For example:
+```
+  plugins: [
+    new ExtractTextPlugin("../stylesheets/bootstrap-and-customizations.css")
+  ]
+```
 
 ### Based on:
 * [boostrap-webpack](https://github.com/bline/bootstrap-webpack).
