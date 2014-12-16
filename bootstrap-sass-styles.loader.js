@@ -54,9 +54,10 @@ module.exports = function (content) {
   var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
   logger.verbose(config, "bootstrap-sass location: %s", pathToBootstrapSass);
 
+  var relativePath = path.relative(this.context, pathToBootstrapSass);
   var start =
     "@import          \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
-    "$icon-font-path: \""+ path.join(pathToBootstrapSass, "fonts/bootstrap") + "\";\n";
+    "$icon-font-path: \""+ path.join(relativePath, "fonts/bootstrap/") + "\";\n";
 
   if (bootstrapCustomizations && fs.existsSync(bootstrapCustomizations)) {
     logger.verbose(config, "bootstrapCustomizations: %s", bootstrapCustomizations);
