@@ -47,37 +47,43 @@ var fs = require('fs');
 var bootstrapSassPath = require("./bootstrapSassPath");
 var logger = require("./logger");
 
+function addImportReturnDependency(loader, config, propertyName) {
+  var fileName = config[propertyName];
+  if (fileName && fileName.length > 0) {
+    var fileNameResolved = path.resolve(fileName);
+    if (fs.existsSync(fileNameResolved)) {
+      logger.verbose(config, "fileName for %s: %s", propertyName, fileNameResolved);
+      loader.addDependency(fileNameResolved);
+      return "@import          \"" + fileNameResolved + "\";\n";
+    } else {
+      var msg = "Could not find path to config." + propertyName + ": " + fileNameResolved;
+      console.error("ERROR: " + msg);
+      throw new Error(msg);
+    }
+  }
+}
+
 module.exports = function (content) {
   this.cacheable(true);
   var config = this.exec(content, this.resourcePath);
-  var bootstrapCustomizations = config.bootstrapCustomizations;
   var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
   logger.verbose(config, "bootstrap-sass location: %s", pathToBootstrapSass);
 
   var relativePath = path.relative(this.context, pathToBootstrapSass);
   var start =
-    "@import          \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
-    "$icon-font-path: \""+ path.join(relativePath, "fonts/bootstrap/") + "\";\n";
+    "@import          \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
+    "$icon-font-path: \"" + path.join(relativePath, "fonts/bootstrap/") + "\";\n";
 
-  if (bootstrapCustomizations && fs.existsSync(bootstrapCustomizations)) {
-    logger.verbose(config, "bootstrapCustomizations: %s", bootstrapCustomizations);
-    this.addDependency(bootstrapCustomizations);
-    start += "@import          \"" + bootstrapCustomizations + "\";\n";
-  }
+  start += addImportReturnDependency(this, config, "bootstrapCustomizations");
 
-  var source = start + partials.filter(function (partial) {
-    return config.styles[partial];
-  }).map(function (partial) {
-    return "@import \""+ path.join(pathToBootstrapSass, "stylesheets/bootstrap", partial) + "\";";
-  }).join("\n");
+  var source = start + partials.filter(function(partial) {
+      return config.styles[partial];
+    }).map(function(partial) {
+      return "@import \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap", partial) + "\";";
+    }).join("\n");
 
   var mainSass = config.mainSass;
-
-  if (mainSass && fs.existsSync(mainSass)) {
-    logger.verbose(config, "mainSass: %s", mainSass);
-    this.addDependency(mainSass);
-    source += "\n@import          \"" + mainSass + "\";\n";
-  }
+  source += addImportReturnDependency(this, config, "mainSass");
 
   return source;
 };

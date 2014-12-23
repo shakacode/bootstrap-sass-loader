@@ -2,7 +2,9 @@ module.exports = {
   verbose: function(config, msg) {
     if (config.verbose) {
       var args = Array.prototype.slice.call(arguments);
-      console.log("[boostrap-sass-loader]: " + msg, args.slice(2));
+      var a = ["[boostrap-sass-loader]: " + msg];
+      a = a.concat(args.slice(2));
+      console.log.apply(null, a);
     }
   }
 };
