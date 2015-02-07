@@ -82,8 +82,9 @@ module.exports = function (content) {
       return "@import \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap", partial) + "\";";
     }).join("\n");
 
-  var mainSass = config.mainSass;
-  source += addImportReturnDependency(this, config, "mainSass");
+  if(config.mainSass) {
+    source += addImportReturnDependency(this, config, "mainSass");
+  }
 
   return source;
 };
