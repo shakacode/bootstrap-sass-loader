@@ -140,7 +140,7 @@ you may have issues.
 * DylanLukes/bootstrap-sass-webpack
 
 # Known Issues
-1. Automatic Dependency loading is currently problematic. If you "touch" the either of the customization files listed in
+1. Automatic Dependency loading is currently problematic. If you "touch" either of the customization files listed in
    your config file (bootstrapCustomizations, mainSass), then that will trigger a rebuild of the Sass files. This is a 
    known issue with the sass-loader.
 
