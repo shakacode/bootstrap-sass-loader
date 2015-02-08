@@ -15,9 +15,11 @@ var scripts = [
 
 var bootstrapSassPath = require("./bootstrapSassPath");
 var path = require("path");
-var logger = require("./logger");
 
 module.exports = function () {};
+
+
+// Create a list of require("path/to/boostrap.js");
 module.exports.pitch = function (configPath) {
   var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
   this.cacheable(true);
@@ -28,6 +30,5 @@ module.exports.pitch = function (configPath) {
     var pathToBootstrapJsFile = JSON.stringify(path.join(pathToBootstrapSass, "javascripts", "bootstrap", script));
     return "require(" + pathToBootstrapJsFile + ");";
   }).join("\n");
-  logger.verbose(config, "Requiring following Bootstrap JavaScript files:\n%s", result);
   return result;
 };

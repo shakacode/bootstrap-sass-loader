@@ -1,5 +1,5 @@
 module.exports = {
-  verbose: false,
+  verbose: true,
   styleLoader: "style-loader!css-loader!sass-loader",
 
   scripts: {
