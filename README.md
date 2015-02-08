@@ -3,7 +3,7 @@ bootstrap-sass-loader
 
 Bootstrap configuration and loading package for webpack, using the npm packages `bootstrap-sass` and `sass-loader`.
 
-If you're looking for the less version, see [boostrap-webpack](https://github.com/bline/bootstrap-webpack). This project
+If you're looking for the less version, see [bootstrap-webpack](https://github.com/bline/bootstrap-webpack). This project
 is based on that version for less, with some minor differences, the main one being how the configuration file specifies
 two sass files for customization.
 
@@ -12,7 +12,7 @@ In a nutshell:
 1. You've got the sass-loader to process Sass files to CSS.
 2. The npm bootstrap-sass package places the bootstrap files in `/node_modules/bootstrap-sass/assets`.
 3. You could simply create your own sass file to pick up bootstrap from this location, and you could require the js
-   files here for the Bootstrap JavaScript code. See the (sass-loader)[https://github.com/jtangelder/sass-loader] for
+   files here for the Bootstrap JavaScript code. See the [sass-loader](https://github.com/jtangelder/sass-loader) for
    instructions on configuring the directories.
 4. Or you could use this loader and load a js file that configures Bootstrap.
 
@@ -71,7 +71,8 @@ module.exports = {
 #### `bootstrap-sass.config.js`
 
 Here's a sample configuration file. The file included in the [bootstrap-sass-loader git repo](https://github.com/justin808/bootstrap-sass-loader/blob/master/bootstrap-sass.config.js)
-has many more options.
+has many more options. The two customization files, `bootstrapCustomizations`
+and `mainSass` are optional.
 
 ``` javascript
 module.exports = {
@@ -109,6 +110,7 @@ module.exports = {
       // Needed for the css-loader when [bootstrap-webpack](https://github.com/bline/bootstrap-webpack)
       // loads bootstrap's css.
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&minetype=application/font-woff" },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&minetype=application/font-woff" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
@@ -136,4 +138,11 @@ you may have issues.
 ### Based on:
 * [boostrap-webpack](https://github.com/bline/bootstrap-webpack).
 * DylanLukes/bootstrap-sass-webpack
+
+# Known Issues
+1. Automatic Dependency loading is currently problematic. If you "touch" the either of the customization files listed in
+   your config file (bootstrapCustomizations, mainSass), then that will trigger a rebuild of the Sass files. This is a 
+   known issue with the sass-loader.
+
+
 

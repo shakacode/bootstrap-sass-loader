@@ -26,6 +26,8 @@
     "css-loader": "*",
     "sass-loader": "*",
     "style-loader": "*",
+    "url-loader": "*",
+    "file-loader": "*",
     "extract-text-webpack-plugin": "*"
   }
 }

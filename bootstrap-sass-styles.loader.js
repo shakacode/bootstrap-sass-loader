@@ -74,7 +74,9 @@ module.exports = function (content) {
     "@import          \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
     "$icon-font-path: \"" + path.join(relativePath, "fonts/bootstrap/") + "\";\n";
 
-  start += addImportReturnDependency(this, config, "bootstrapCustomizations");
+  if (config.bootstrapCustomizations) {
+    start += addImportReturnDependency(this, config, "bootstrapCustomizations");
+  }
 
   var source = start + partials.filter(function(partial) {
       return config.styles[partial];
