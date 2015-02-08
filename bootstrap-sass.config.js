@@ -2,7 +2,7 @@ module.exports = {
   verbose: false, // Set to true to show diagnostic information
 
   bootstrapCustomizations: "./bootstrap-customizations.scss",
-  mainSass: "./main.scss",
+  mainSass: "./main.scss", // path to your main SASS file (optional)
 
   // Default for the style loading
   styleLoader: "style-loader!css-loader!sass-loader",

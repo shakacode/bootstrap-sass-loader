@@ -76,7 +76,7 @@ has many more options.
 ``` javascript
 module.exports = {
   bootstrapCustomizations: "./bootstrap-customizations.scss",
-  mainSass: "./main.scss",
+  mainSass: "./main.scss", // path to your main SASS file (optional)
   styleLoader: "style-loader!css-loader!sass-loader", // see example for the ExtractTextPlugin
   scripts: {
     // add every bootstrap script you need
