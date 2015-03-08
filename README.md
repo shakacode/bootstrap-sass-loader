@@ -51,15 +51,11 @@ The disadvantage to using this setup is that you can't:
 ### 1.b Customized Bootstrap
 
 1. Copy the file `bootstrap-sass.config.js` to your project. You will specify the file path in the `require` statement.
-2. Open that file to customize the location of a file for any Boostrap variable overrides, and your main Sass file that
-   might depend on Bootstrap variables. The location of these two files are optional. You may also remove Sass or Js
-   modules that you don't need.
+2. Open that file to customize the location of a file for any Boostrap variable overrides (`preBootstrapCustomizations`
+   and `bootstrapCustomizations`, and your main Sass file that can depend on Bootstrap variables, plus your customizations.
+   Any of these 3 files are optional. You may also remove any Sass or Js modules that you don't need.
 
-Next, you may either require the sass files in a Js file, or you might specify this as an entry point.
-
-```javascript
-require("bootstrap-sass!./path/to/bootstrap-sass.config.js");
-```
+Next, you should specify this as an entry point:
 
 ```
 module.exports = {
@@ -67,6 +63,13 @@ module.exports = {
     "bootstrap-sass!./path/to/bootstrap-sass.config.js"
   ]
 ```
+
+Or a dependency within a file, like you'd specify other webpack dependencies:
+
+```javascript
+require("bootstrap-sass!./path/to/bootstrap-sass.config.js");
+```
+
 
 #### `bootstrap-sass.config.js`
 
@@ -142,7 +145,21 @@ you may have issues.
 # Known Issues
 1. Automatic Dependency loading is currently problematic. If you "touch" either of the customization files listed in
    your config file (bootstrapCustomizations, mainSass), then that will trigger a rebuild of the Sass files. This is a 
-   known issue with the sass-loader.
+   known issue with the sass-loader. I work around this issue by "touching" one of the 3 sass config files.
 
 
+Testing Changes in the Bootstrap Sass Loader
+=======================================================
+1. See this article [Debugging NodeJs and Webpack Loaders](http://forum.railsonmaui.com/t/debugging-nodejs-and-webpack-loaders/142)
+2. Clone both this project and https://github.com/justin808/bootstrap-sass-loader-example
+3. Use the npm link command per step #1 (see article)
 
+Then in the bootstrap-sass-loader-example project:
+
+1. Make some changes in the loader, put in some print statements maybe, then run `gulp webpack` to invoke the loader.
+2. Then run `gulp build`and open the resulting file dist/index.html in the browser.
+
+
+Pull requests are welcome!
+
+For more info see: http://www.railsonmaui.com and http://forum.railsonmaui.com.

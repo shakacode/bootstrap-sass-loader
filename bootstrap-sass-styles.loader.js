@@ -70,7 +70,11 @@ module.exports = function (content) {
   logger.verbose(config, "bootstrap-sass location: %s", pathToBootstrapSass);
 
   var relativePath = path.relative(this.context, pathToBootstrapSass);
-  var start =
+  var start = "";
+  if (config.preBootstrapCustomizations) {
+    start += addImportReturnDependency(this, config, "preBootstrapCustomizations");
+  }
+  start +=
     "@import          \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
     "$icon-font-path: \"" + path.join(relativePath, "fonts/bootstrap/") + "\";\n";
 

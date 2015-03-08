@@ -1,4 +1,5 @@
-// Example file. Copy this to your project
+// Example file. Copy this to your project. Change then names of the referenced files or comment them out.
+// Convention is to name sass partials to start with an "_"
 module.exports = {
   verbose: true, // Set to true to show diagnostic information
 
@@ -7,8 +8,15 @@ module.exports = {
   // mainSass: gets loaded after bootstrap, so you can override a bootstrap style.
   // NOTE, these are optional.
 
-   bootstrapCustomizations: "./bootstrap-customizations.scss",
-   mainSass: "./main.scss",
+  // Use preBootstrapCustomizations to change $brand-primary. Ensure this preBootstrapCustomizations does not
+  // depend on other bootstrap variables.
+  preBootstrapCustomizations: "./_pre-bootstrap-customizations.scss",
+
+  // Use bootstrapCustomizations to utilize other sass variables defined in preBootstrapCustomizations or the
+  // _variables.scss file. This is useful to set one customization value based on another value.
+  bootstrapCustomizations: "./_bootstrap-customizations.scss",
+
+  mainSass: "./_main.scss",
 
   // Default for the style loading
   styleLoader: "style-loader!css-loader!sass-loader",
