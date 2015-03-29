@@ -1,5 +1,5 @@
 // Example file. Copy this to your project. Change then names of the referenced files or comment them out.
-// Convention is to name sass partials to start with an "_"
+// Convention is to name sass partials to start with an '_'
 module.exports = {
   verbose: true, // Set to true to show diagnostic information
 
@@ -10,23 +10,23 @@ module.exports = {
 
   // Use preBootstrapCustomizations to change $brand-primary. Ensure this preBootstrapCustomizations does not
   // depend on other bootstrap variables.
-  preBootstrapCustomizations: "./_pre-bootstrap-customizations.scss",
+  preBootstrapCustomizations: './_pre-bootstrap-customizations.scss',
 
   // Use bootstrapCustomizations to utilize other sass variables defined in preBootstrapCustomizations or the
   // _variables.scss file. This is useful to set one customization value based on another value.
-  bootstrapCustomizations: "./_bootstrap-customizations.scss",
+  bootstrapCustomizations: './_bootstrap-customizations.scss',
 
-  mainSass: "./_main.scss",
+  mainSass: './_main.scss',
 
   // Default for the style loading
-  styleLoader: "style-loader!css-loader!sass-loader",
+  styleLoader: 'style-loader!css-loader!sass-loader',
   //
   // If you want to use the ExtractTextPlugin
   //   and you want compressed
-  //     styleLoader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader"),
+  //     styleLoader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
   //
   // If you want expanded CSS
-  //   styleLoader: ExtractTextPlugin.extract("style-loader", "css-loader!sass?outputStyle=expanded"),
+  //   styleLoader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass?outputStyle=expanded'),
 
   scripts: {
     'transition': true,
@@ -43,49 +43,49 @@ module.exports = {
     'affix': true
   },
   styles: {
-    "mixins": true,
+    'mixins': true,
 
-    "normalize": true,
-    "print": true,
-    "glyphicons": true,
+    'normalize': true,
+    'print': true,
+    'glyphicons': true,
 
-    "scaffolding": true,
-    "type": true,
-    "code": true,
-    "grid": true,
-    "tables": true,
-    "forms": true,
-    "buttons": true,
+    'scaffolding': true,
+    'type': true,
+    'code': true,
+    'grid': true,
+    'tables': true,
+    'forms': true,
+    'buttons': true,
 
-    "component-animations": true,
-    "dropdowns": true,
-    "button-groups": true,
-    "input-groups": true,
-    "navs": true,
-    "navbar": true,
-    "breadcrumbs": true,
-    "pagination": true,
-    "pager": true,
-    "labels": true,
-    "badges": true,
-    "jumbotron": true,
-    "thumbnails": true,
-    "alerts": true,
-    "progress-bars": true,
-    "media": true,
-    "list-group": true,
-    "panels": true,
-    "wells": true,
-    "responsive-embed": true,
-    "close": true,
+    'component-animations': true,
+    'dropdowns': true,
+    'button-groups': true,
+    'input-groups': true,
+    'navs': true,
+    'navbar': true,
+    'breadcrumbs': true,
+    'pagination': true,
+    'pager': true,
+    'labels': true,
+    'badges': true,
+    'jumbotron': true,
+    'thumbnails': true,
+    'alerts': true,
+    'progress-bars': true,
+    'media': true,
+    'list-group': true,
+    'panels': true,
+    'wells': true,
+    'responsive-embed': true,
+    'close': true,
 
-    "modals": true,
-    "tooltip": true,
-    "popovers": true,
-    "carousel": true,
+    'modals': true,
+    'tooltip': true,
+    'popovers': true,
+    'carousel': true,
 
-    "utilities": true,
-    "responsive-utilities": true
+    'utilities': true,
+    'responsive-utilities': true
   }
 };
 
