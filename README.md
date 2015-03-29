@@ -81,6 +81,8 @@ and `mainSass` are optional.
 module.exports = {
   bootstrapCustomizations: "./bootstrap-customizations.scss",
   mainSass: "./main.scss", // path to your main SASS file (optional)
+  verbose: true, // print out your custom files used
+  debug: false, // print out the full generated scss file
   styleLoader: "style-loader!css-loader!sass-loader", // see example for the ExtractTextPlugin
   scripts: {
     // add every bootstrap script you need
@@ -100,7 +102,19 @@ module.exports = {
 ```
 
 ### Font Configuration
-Bootstrap use some fonts. You need to configure the correct loaders in your `webpack.config.js`. Example:
+Bootstrap use some fonts. You need to configure the correct loaders in your `webpack.config.js`. 
+
+Take a look at example https://github.com/justin808/react-webpack-rails-tutorial which uses custom fonts with the
+bootstrap-sass-loader. You'll need to create define a font-face like this:
+
+```scss
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('assets/fonts/OpenSans-Light.ttf') format('truetype');
+}
+```
+
+### Example Loaders Configuration:
 
 ``` javascript
 module.exports = {
@@ -153,11 +167,16 @@ Testing Changes in the Bootstrap Sass Loader
 1. See this article [Debugging NodeJs and Webpack Loaders](http://forum.railsonmaui.com/t/debugging-nodejs-and-webpack-loaders/142)
 2. Clone both this project and https://github.com/justin808/bootstrap-sass-loader-example
 3. Use the npm link command per step #1 (see article)
+4. Be sure to run `npm i bootstrap-sass` in the directory where you have the `bootstrap-sass-loader`. This is because
+   the location of bootstap-sass is found relative to the `bootstrap-sass-loader` and if you linked it and it's not not
+   there, then you'll bet this error: "Error: Could not find path to bootstrap-sass. Check to see that it's in a parent 
+   directory of config file containing node_modules/bootstrap-sass".
 
 Then in the bootstrap-sass-loader-example project:
 
 1. Make some changes in the loader, put in some print statements maybe, then run `gulp webpack` to invoke the loader.
-2. Then run `gulp build`and open the resulting file dist/index.html in the browser.
+2. Then run `gulp build` and open the resulting file dist/index.html in the browser.
+3. Run `gulp test` to confirm the changes work.
 
 
 Pull requests are welcome!

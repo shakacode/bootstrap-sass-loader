@@ -54,7 +54,7 @@ function addImportReturnDependency(loader, config, propertyName) {
     if (fs.existsSync(fileNameResolved)) {
       logger.verbose(config, "fileName for %s: %s", propertyName, fileNameResolved);
       loader.addDependency(fileNameResolved);
-      return "@import          \"" + fileNameResolved + "\";\n";
+      return "@import \"" + fileNameResolved + "\";\n";
     } else {
       var msg = "Could not find path to config." + propertyName + ": " + fileNameResolved;
       console.error("ERROR: " + msg);
@@ -71,12 +71,16 @@ module.exports = function (content) {
 
   var relativePath = path.relative(this.context, pathToBootstrapSass);
   var start = "";
+  // This needs to be relative
+  var iconFontPath = "$icon-font-path: \"" + path.join(relativePath, "fonts/bootstrap/") + "\";";
+  logger.verbose(config, "Setting: %s", iconFontPath);
+
   if (config.preBootstrapCustomizations) {
     start += addImportReturnDependency(this, config, "preBootstrapCustomizations");
   }
   start +=
-    "@import          \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" +
-    "$icon-font-path: \"" + path.join(relativePath, "fonts/bootstrap/") + "\";\n";
+    // Absolute paths as these are created at build time.
+    "@import \"" + path.join(pathToBootstrapSass, "stylesheets/bootstrap/variables") + "\";\n" + iconFontPath + "\n";
 
   if (config.bootstrapCustomizations) {
     start += addImportReturnDependency(this, config, "bootstrapCustomizations");
@@ -89,8 +93,10 @@ module.exports = function (content) {
     }).join("\n");
 
   if (config.mainSass) {
-    source += addImportReturnDependency(this, config, "mainSass");
+    source += "\n" + addImportReturnDependency(this, config, "mainSass");
   }
+
+  logger.debug(config, "Generated scss file is:\n" + source);
 
   return source;
 };
