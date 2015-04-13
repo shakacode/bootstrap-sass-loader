@@ -96,6 +96,8 @@ module.exports = function (content) {
     source += "\n" + addImportReturnDependency(this, config, "mainSass");
   }
 
+  source = source.replace(/\\/g, '/');
+
   logger.debug(config, "Generated scss file is:\n" + source);
 
   return source;
