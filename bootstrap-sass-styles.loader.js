@@ -3,6 +3,7 @@ var partials = [
 
   "normalize",
   "print",
+  "glyphicons",
 
   "scaffolding",
   "type",
@@ -13,7 +14,6 @@ var partials = [
   "buttons",
 
   "component-animations",
-  "glyphicons",
   "dropdowns",
   "button-groups",
   "input-groups",
@@ -32,6 +32,7 @@ var partials = [
   "list-group",
   "panels",
   "wells",
+  "responsive-embed",
   "close",
 
   "modals",
