@@ -28,7 +28,8 @@ module.exports.pitch = function(configPath) {
   return scripts.filter(function(script) {
     return config.scripts[script];
   }).map(function(script) {
-    var pathToBootstrapJsFile = JSON.stringify(path.join(pathToBootstrapSass, 'javascripts', 'bootstrap', script));
+    var pathToBootstrapJsFile = JSON.stringify(path.join(pathToBootstrapSass, 'javascripts',
+        'bootstrap', script));
     return 'require(' + pathToBootstrapJsFile + ');';
   }).join('\n');
 };

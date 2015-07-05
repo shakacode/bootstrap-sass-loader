@@ -83,7 +83,8 @@ module.exports = function(content) {
   }
   start +=
     // Absolute paths as these are created at build time.
-    '@import \'' + path.join(pathToBootstrapSass, 'stylesheets/bootstrap/variables') + '\';\n' + iconFontPath + '\n';
+    '@import \'' + path.join(pathToBootstrapSass,
+      'stylesheets/bootstrap/variables') + '\';\n' + iconFontPath + '\n';
 
   if (config.bootstrapCustomizations) {
     start += addImportReturnDependency(this, config, 'bootstrapCustomizations');
@@ -92,7 +93,8 @@ module.exports = function(content) {
   source = start + partials.filter(function(partial) {
       return config.styles[partial];
     }).map(function(partial) {
-      return '@import \'' + path.join(pathToBootstrapSass, 'stylesheets/bootstrap', partial) + '\';';
+      return '@import \'' + path.join(pathToBootstrapSass, 'stylesheets/bootstrap',
+          partial) + '\';';
     }).join('\n');
 
   if (config.mainSass) {

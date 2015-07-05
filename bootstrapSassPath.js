@@ -2,8 +2,8 @@ var fs = require('fs');
 var path = require('path');
 
 function bootstrapNotFound() {
-  var msg = 'Could not find path to bootstrap-sass. Check to see that it is in a parent directory of config file ' +
-    'containing node_modules/bootstrap-sass';
+  var msg = 'Could not find path to bootstrap-sass. Check to see that it is in a parent ' +
+    'directory of config file containing node_modules/bootstrap-sass';
   console.error('ERROR: ' + msg);
   throw new Error(msg);
 }
