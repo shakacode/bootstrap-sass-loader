@@ -32,7 +32,7 @@ module.exports = {
       i += 1;
     } while (!fs.existsSync(bootstrapSassParentPath) && i < 10);
 
-    if (i == 10) {
+    if (i === 10) {
       bootstrapNotFound();
     }
     return path.join(bootstrapSassParentPath, "assets");
