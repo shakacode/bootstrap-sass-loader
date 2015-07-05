@@ -184,3 +184,9 @@ Then in the bootstrap-sass-loader-example project:
 Pull requests are welcome!
 
 For more info see: http://www.railsonmaui.com and http://forum.railsonmaui.com.
+
+Code Inspection and ESLint
+======================================================
+1. If using Webstorm import the inspection file in /jetbrains-inspection and inspect all files
+2. Command line: `eslint .`
+
