@@ -20,7 +20,7 @@ module.exports = function() {
 };
 
 
-// Create a list of require('path/to/boostrap.js');
+// Create a list of require('path/to/bootstrap.js');
 module.exports.pitch = function(configPath) {
   var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
   var config = require(configPath);
