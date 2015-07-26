@@ -2,7 +2,7 @@ module.exports = {
   log: function() {
     var msg = arguments[1];
     var args = Array.prototype.slice.call(arguments);
-    var a = ['[boostrap-sass-loader]: ' + msg];
+    var a = ['[bootstrap-sass-loader]: ' + msg];
     a = a.concat(args.slice(2));
     console.log.apply(null, a);
   },
