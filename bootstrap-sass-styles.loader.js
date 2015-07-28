@@ -53,7 +53,7 @@ function addImportReturnDependency(loader, config, propertyName) {
   var fileNameResolved;
   var fileName = config[propertyName];
   if (fileName && fileName.length > 0) {
-    fileNameResolved = path.resolve(fileName);
+    fileNameResolved = path.relative(loader.context, fileName);
     if (!fs.existsSync(fileNameResolved)) {
       msg = 'Could not find path to config.' + propertyName + ': ' + fileNameResolved;
       console.error('ERROR: ' + msg);
@@ -70,12 +70,12 @@ module.exports = function(content) {
   var source;
   var config = this.exec(content, this.resourcePath);
   var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
-  var relativePath = path.relative(this.context, pathToBootstrapSass);
+  var relativePathToBootstrapSass = path.relative(this.context, pathToBootstrapSass);
   var start = '';
   // This needs to be relative
-  var iconFontPath = '$icon-font-path: \'' + path.join(relativePath, 'fonts/bootstrap/') + '\';';
+  var iconFontPath = '$icon-font-path: \'' + path.join(relativePathToBootstrapSass, 'fonts/bootstrap/') + '\';';
   this.cacheable(true);
-  logger.verbose(config, 'bootstrap-sass location: %s', pathToBootstrapSass);
+  logger.verbose(config, 'bootstrap-sass location: %s', relativePathToBootstrapSass);
   logger.verbose(config, 'Setting: %s', iconFontPath);
 
   if (config.preBootstrapCustomizations) {
@@ -83,7 +83,7 @@ module.exports = function(content) {
   }
   start +=
     // Absolute paths as these are created at build time.
-    '@import \'' + path.join(pathToBootstrapSass,
+    '@import \'' + path.join(relativePathToBootstrapSass,
       'stylesheets/bootstrap/variables') + '\';\n' + iconFontPath + '\n';
 
   if (config.bootstrapCustomizations) {
@@ -93,7 +93,7 @@ module.exports = function(content) {
   source = start + partials.filter(function(partial) {
       return config.styles[partial];
     }).map(function(partial) {
-      return '@import \'' + path.join(pathToBootstrapSass, 'stylesheets/bootstrap',
+      return '@import \'' + path.join(relativePathToBootstrapSass, 'stylesheets/bootstrap',
           partial) + '\';';
     }).join('\n');
 
