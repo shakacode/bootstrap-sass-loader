@@ -190,3 +190,9 @@ Code Inspection and ESLint
 1. If using Webstorm import the inspection file in /jetbrains-inspection and inspect all files
 2. Command line: `eslint .`
 
+Publishing to NPM
+======================================================
+1. Install the [release-it npm](https://github.com/webpro/release-it) program
+2. Merge fixes to master
+3. Run command `release-it`
+4. Take defaults, except for last one to publish changes (answer Y)
