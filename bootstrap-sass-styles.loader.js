@@ -44,21 +44,14 @@ var partials = [
   'responsive-utilities'
 ];
 var path = require('path');
-var fs = require('fs');
 var bootstrapSassPath = require('./bootstrapSassPath');
 var logger = require('./logger');
 
 function addImportReturnDependency(loader, config, propertyName) {
-  var msg;
   var fileNameResolved;
   var fileName = config[propertyName];
   if (fileName && fileName.length > 0) {
     fileNameResolved = path.relative(loader.context, fileName);
-    if (!fs.existsSync(fileNameResolved)) {
-      msg = 'Could not find path to config.' + propertyName + ': ' + fileNameResolved;
-      console.error('ERROR: ' + msg);
-      throw new Error(msg);
-    }
 
     logger.verbose(config, 'fileName for %s: %s', propertyName, fileNameResolved);
     loader.addDependency(fileNameResolved);
