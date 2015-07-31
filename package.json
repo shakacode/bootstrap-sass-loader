@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/justin808/bootstrap-sass-loader/issues"
   },
-  "dendendencies": {},
+  "dependencies": {},
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
     "style-loader": "*",
     "url-loader": "*",
     "file-loader": "*"
+  },
+  "scripts": {
+    "test": "echo 'Please see README.md for test instructions'; exit 1;"
   }
 }
