@@ -20,7 +20,7 @@ In a nutshell:
 
 You can find an example of using this:
 
-[justin808/bootstrap-sass-loader-example](https://github.com/justin808/bootstrap-sass-loader-example)
+[shakacode/bootstrap-sass-loader-example](https://github.com/shakacode/bootstrap-sass-loader-example)
 
 Note, `bootstrap-sass` must be installed locally inside of `../node_modules` or a parent directories `node_modules`
 directory relative to the loaded config file.
@@ -75,7 +75,7 @@ require("bootstrap-sass!./path/to/bootstrap-sass.config.js");
 
 #### `bootstrap-sass.config.js`
 
-Here's a sample configuration file. The file included in the [bootstrap-sass-loader git repo](https://github.com/justin808/bootstrap-sass-loader/blob/master/bootstrap-sass.config.js)
+Here's a sample configuration file. The file included in the [bootstrap-sass-loader git repo](https://github.com/shakacode/bootstrap-sass-loader/blob/master/bootstrap-sass.config.js)
 has many more options. The two customization files, `bootstrapCustomizations`
 and `mainSass` are optional.
 
@@ -106,7 +106,7 @@ module.exports = {
 ### Font Configuration
 Bootstrap use some fonts. You need to configure the correct loaders in your `webpack.config.js`.
 
-Take a look at example https://github.com/justin808/react-webpack-rails-tutorial which uses custom fonts with the
+Take a look at example https://github.com/shakacode/react-webpack-rails-tutorial which uses custom fonts with the
 bootstrap-sass-loader. You'll need to create define a font-face like this:
 
 ```scss
@@ -167,7 +167,7 @@ you may have issues.
 Testing Changes in the Bootstrap Sass Loader
 =======================================================
 1. See this article [Debugging NodeJs and Webpack Loaders](http://forum.railsonmaui.com/t/debugging-nodejs-and-webpack-loaders/142)
-2. Clone both this project and https://github.com/justin808/bootstrap-sass-loader-example
+2. Clone both this project and https://github.com/shakacode/bootstrap-sass-loader-example
 3. Use the npm link command per step #1 (see article)
 4. Be sure to run `npm i bootstrap-sass` in the directory where you have the `bootstrap-sass-loader`. This is because
    the location of bootstap-sass is found relative to the `bootstrap-sass-loader` and if you linked it and it's not not

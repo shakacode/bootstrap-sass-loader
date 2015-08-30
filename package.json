@@ -13,13 +13,13 @@
     "name": "Justin Gordon <justin.gordon@gmail.com>"
   },
   "bugs": {
-    "url": "https://github.com/justin808/bootstrap-sass-loader/issues"
+    "url": "https://github.com/shakacode/bootstrap-sass-loader/issues"
   },
   "dependencies": {},
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/justin808/bootstrap-sass-loader.git"
+    "url": "https://github.com/shakacode/bootstrap-sass-loader.git"
   },
   "peerDependencies": {
     "bootstrap-sass": "*",
