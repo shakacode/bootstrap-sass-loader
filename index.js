@@ -1,1 +1,1 @@
-require('./bootstrap-sass-no-customizations.config');
+require('./bootstrap-no-customizations.config');
