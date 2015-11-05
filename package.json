@@ -1,5 +1,5 @@
 {
-  "name": "bootstrap-webpack",
+  "name": "bootstrap-v4-webpack",
   "description": "bootstrap 4 package for webpack",
   "main": "index.js",
   "version": "1.0.0",
@@ -14,13 +14,13 @@
     "Markus Wetzel <markuswetzel@gmx.net> (https://github.com/markusjwetzel)"
   ],
   "bugs": {
-    "url": "https://github.com/markusjwetzel/bootstrap-webpack/issues"
+    "url": "https://github.com/markusjwetzel/bootstrap-v4-webpack/issues"
   },
   "dependencies": {},
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markusjwetzel/bootstrap-webpack.git"
+    "url": "https://github.com/markusjwetzel/bootstrap-v4-webpack.git"
   },
   "peerDependencies": {
     "bootstrap": "twbs/bootstrap#v4-dev",
