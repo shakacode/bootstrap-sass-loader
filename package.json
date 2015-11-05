@@ -2,7 +2,7 @@
   "name": "bootstrap-webpack",
   "description": "bootstrap 4 package for webpack",
   "main": "index.js",
-  "version": "1.0.9",
+  "version": "1.0.0",
   "loader": "index.loader.js",
   "keywords": [
     "bootstrap",
@@ -14,13 +14,13 @@
     "Markus Wetzel <markuswetzel@gmx.net> (https://github.com/markusjwetzel)"
   ],
   "bugs": {
-    "url": "https://github.com/shakacode/bootstrap-webpack/issues"
+    "url": "https://github.com/markusjwetzel/bootstrap-webpack/issues"
   },
   "dependencies": {},
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakacode/bootstrap-sass-loader.git"
+    "url": "https://github.com/markusjwetzel/bootstrap-webpack.git"
   },
   "peerDependencies": {
     "bootstrap": "twbs/bootstrap#v4-dev",
