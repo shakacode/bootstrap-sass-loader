@@ -9,10 +9,10 @@
     "webpack",
     "sass"
   ],
-  "authors": {
+  "authors": [
     "Justin Gordon <justin.gordon@gmail.com>",
     "Markus Wetzel <markuswetzel@gmx.net> (https://github.com/markusjwetzel)"
-  },
+  ],
   "bugs": {
     "url": "https://github.com/shakacode/bootstrap-webpack/issues"
   },
