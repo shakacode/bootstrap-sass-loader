@@ -1,3 +1,5 @@
+**Important:** This is still the readme of [shakacode/bootstrap-sass-loader](https://github.com/shakacode/bootstrap-sass-loader), the Bootstrap 3 (!) Sass package. Since this package is based on bootstrap-sass-loader most of the readme should be up to date nonetheless. Make sure to load Bootstrap version 4 (i. e. `"bootstrap": "twbs/bootstrap#v4-dev"`) instead of Bootstrap 3 Sass (`"bootstrap-sass": "~3.3.1"`).
+
 bootstrap-sass-loader
 =================
 
