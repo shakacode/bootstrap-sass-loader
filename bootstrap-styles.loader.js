@@ -44,7 +44,7 @@ var partials = [
   'utilities-responsive'
 ];
 var path = require('path');
-var bootstrapSassPath = require('./bootstrapPath');
+var bootstrapPath = require('./bootstrapPath');
 var logger = require('./logger');
 
 function addImportReturnDependency(loader, config, propertyName) {
@@ -62,18 +62,18 @@ function addImportReturnDependency(loader, config, propertyName) {
 module.exports = function(content) {
   var source;
   var config = this.exec(content, this.resourcePath);
-  var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
-  var relativePathToBootstrapSass = path.relative(this.context, pathToBootstrapSass);
+  var pathToBootstrap = bootstrapPath.getPath(this.context);
+  var relativePathToBootstrap = path.relative(this.context, pathToBootstrap);
   var start = '';
   this.cacheable(true);
-  logger.verbose(config, 'bootstrap location: %s', relativePathToBootstrapSass);
+  logger.verbose(config, 'bootstrap location: %s', relativePathToBootstrap);
 
   if (config.preBootstrapCustomizations) {
     start += addImportReturnDependency(this, config, 'preBootstrapCustomizations');
   }
   start +=
     // Absolute paths as these are created at build time.
-    '@import \'' + path.join(relativePathToBootstrapSass,
+    '@import \'' + path.join(relativePathToBootstrap,
       'scss/variables') + '\';\n';
 
   if (config.bootstrapCustomizations) {
@@ -83,7 +83,7 @@ module.exports = function(content) {
   source = start + partials.filter(function(partial) {
       return config.styles[partial];
     }).map(function(partial) {
-      return '@import \'' + path.join(relativePathToBootstrapSass, 'scss',
+      return '@import \'' + path.join(relativePathToBootstrap, 'scss',
           partial) + '\';';
     }).join('\n');
 
