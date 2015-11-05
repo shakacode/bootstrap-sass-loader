@@ -3,48 +3,48 @@ var partials = [
 
   'normalize',
   'print',
-  'glyphicons',
 
-  'scaffolding',
+  'reboot',
   'type',
+  'images',
   'code',
   'grid',
   'tables',
   'forms',
   'buttons',
 
-  'component-animations',
-  'dropdowns',
-  'button-groups',
-  'input-groups',
-  'navs',
+  'animation',
+  'dropdown',
+  'button-group',
+  'input-group',
+  'custom-forms',
+  'nav',
   'navbar',
-  'breadcrumbs',
+  'card',
+  'breadcrumb',
   'pagination',
   'pager',
   'labels',
-  'badges',
   'jumbotron',
-  'thumbnails',
-  'alerts',
-  'progress-bars',
+  'alert',
+  'progress',
   'media',
   'list-group',
-  'panels',
-  'wells',
   'responsive-embed',
   'close',
 
-  'modals',
+  'modal',
   'tooltip',
-  'popovers',
+  'popover',
   'carousel',
 
   'utilities',
-  'responsive-utilities'
+  'utilities-background',
+  'utilities-spacing',
+  'utilities-responsive'
 ];
 var path = require('path');
-var bootstrapSassPath = require('./bootstrapSassPath');
+var bootstrapSassPath = require('./bootstrapPath');
 var logger = require('./logger');
 
 function addImportReturnDependency(loader, config, propertyName) {
@@ -65,11 +65,8 @@ module.exports = function(content) {
   var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
   var relativePathToBootstrapSass = path.relative(this.context, pathToBootstrapSass);
   var start = '';
-  // This needs to be relative
-  var iconFontPath = '$icon-font-path: \'' + path.join(relativePathToBootstrapSass, 'fonts/bootstrap/') + '\';';
   this.cacheable(true);
-  logger.verbose(config, 'bootstrap-sass location: %s', relativePathToBootstrapSass);
-  logger.verbose(config, 'Setting: %s', iconFontPath);
+  logger.verbose(config, 'bootstrap location: %s', relativePathToBootstrapSass);
 
   if (config.preBootstrapCustomizations) {
     start += addImportReturnDependency(this, config, 'preBootstrapCustomizations');
@@ -77,7 +74,7 @@ module.exports = function(content) {
   start +=
     // Absolute paths as these are created at build time.
     '@import \'' + path.join(relativePathToBootstrapSass,
-      'stylesheets/bootstrap/variables') + '\';\n' + iconFontPath + '\n';
+      'scss/variables') + '\';\n';
 
   if (config.bootstrapCustomizations) {
     start += addImportReturnDependency(this, config, 'bootstrapCustomizations');
@@ -86,7 +83,7 @@ module.exports = function(content) {
   source = start + partials.filter(function(partial) {
       return config.styles[partial];
     }).map(function(partial) {
-      return '@import \'' + path.join(relativePathToBootstrapSass, 'stylesheets/bootstrap',
+      return '@import \'' + path.join(relativePathToBootstrapSass, 'scss',
           partial) + '\';';
     }).join('\n');
 

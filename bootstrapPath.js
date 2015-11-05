@@ -35,6 +35,6 @@ module.exports = {
     if (i === 10) {
       bootstrapNotFound();
     }
-    return path.join(bootstrapSassParentPath, 'assets');
+    return bootstrapSassParentPath;
   }
 };
