@@ -23,7 +23,7 @@
     "url": "https://github.com/markusjwetzel/bootstrap-v4-webpack.git"
   },
   "peerDependencies": {
-    "bootstrap": "twbs/bootstrap#v4-dev",
+    "bootstrap": "*",
     "css-loader": "*",
     "sass-loader": "*",
     "style-loader": "*",
