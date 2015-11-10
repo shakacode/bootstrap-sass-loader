@@ -17,9 +17,9 @@ module.exports.pitch = function(remainingRequest) {
   this.cacheable(true);
 
   if (!configFilePath || configFilePath.trim() === '') {
-    msg = 'You specified the bootstrap-sass-loader with no configuration file. Please specify' +
-      ' the configuration file, like: \'bootstrap-sass!./bootstrap-sass.config.js\' or use' +
-      ' require(\'bootstrap-sass-loader\').';
+    msg = 'You specified the bootstrap-loader with no configuration file. Please specify' +
+      ' the configuration file, like: \'bootstrap!./bootstrap.config.js\' or use' +
+      ' require(\'bootstrap-loader\').';
     console.error('ERROR: ' + msg);
     throw new Error(msg);
   }
@@ -29,9 +29,9 @@ module.exports.pitch = function(remainingRequest) {
   logger.verbose(config, 'styleLoader: %s', styleLoader);
 
   styleLoaderCommand = 'require(' + JSON.stringify('-!' + styleLoader + '!' +
-      require.resolve('./bootstrap-sass-styles.loader.js') + '!' + configFilePath) + ');';
+      require.resolve('./bootstrap-styles.loader.js') + '!' + configFilePath) + ');';
   jsLoaderCommand = 'require(' + JSON.stringify('-!' +
-      require.resolve('./bootstrap-sass-scripts.loader.js') + '!' + configFilePath) + ');';
+      require.resolve('./bootstrap-scripts.loader.js') + '!' + configFilePath) + ');';
   result = [styleLoaderCommand, jsLoaderCommand].join('\n');
   return result;
 };

@@ -1,28 +1,29 @@
 {
-  "name": "bootstrap-sass-loader",
-  "description": "bootstrap-sass package for webpack",
+  "name": "bootstrap-v4-webpack",
+  "description": "bootstrap 4 package for webpack",
   "main": "index.js",
-  "version": "1.0.9",
+  "version": "1.0.0",
   "loader": "index.loader.js",
   "keywords": [
     "bootstrap",
     "webpack",
     "sass"
   ],
-  "author": {
-    "name": "Justin Gordon <justin.gordon@gmail.com>"
-  },
+  "authors": [
+    "Justin Gordon <justin.gordon@gmail.com>",
+    "Markus Wetzel <markuswetzel@gmx.net> (https://github.com/markusjwetzel)"
+  ],
   "bugs": {
-    "url": "https://github.com/shakacode/bootstrap-sass-loader/issues"
+    "url": "https://github.com/markusjwetzel/bootstrap-v4-webpack/issues"
   },
   "dependencies": {},
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakacode/bootstrap-sass-loader.git"
+    "url": "https://github.com/markusjwetzel/bootstrap-v4-webpack.git"
   },
   "peerDependencies": {
-    "bootstrap-sass": "*",
+    "bootstrap": "*",
     "css-loader": "*",
     "sass-loader": "*",
     "style-loader": "*",

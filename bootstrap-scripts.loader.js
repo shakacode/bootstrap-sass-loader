@@ -1,19 +1,18 @@
 var scripts = [
-  'transition',
+  'util',
   'alert',
   'button',
   'carousel',
   'collapse',
   'dropdown',
   'modal',
-  'tooltip',
-  'popover',
   'scrollspy',
   'tab',
-  'affix'
+  'tooltip',
+  'popover'
 ];
 
-var bootstrapSassPath = require('./bootstrapSassPath');
+var bootstrapPath = require('./bootstrapPath');
 var path = require('path');
 
 module.exports = function() {
@@ -22,13 +21,13 @@ module.exports = function() {
 
 // Create a list of require('path/to/bootstrap.js');
 module.exports.pitch = function(configPath) {
-  var pathToBootstrapSass = bootstrapSassPath.getPath(this.context);
+  var pathToBootstrap = bootstrapPath.getPath(this.context);
   var config = require(configPath);
   this.cacheable(true);
   return scripts.filter(function(script) {
     return config.scripts[script];
   }).map(function(script) {
-    var pathToBootstrapJsFile = JSON.stringify(path.join(pathToBootstrapSass, 'javascripts',
+    var pathToBootstrapJsFile = JSON.stringify(path.join(pathToBootstrap, 'js/src',
         'bootstrap', script));
     return 'require(' + pathToBootstrapJsFile + ');';
   }).join('\n');
