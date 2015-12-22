@@ -1,3 +1,32 @@
+DEPRECATED
+================
+
+We're moving to a new project name and slightly different file format.
+
+## New Locations
+The new npm libs and corresponding github repos are:
+
+1. [boostrap-loader](https://github.com/shakacode/bootstrap-loader)
+1. [sass-resources-loader](https://github.com/shakacode/sass-resources-loader)
+
+## New Features
+1. Supports Bootstrap v3 and v4
+1. Easier to remove jQuery
+1. Supports CSS Modules
+
+This new system is currently used by the live demo of [reactrails.com](http://www.reactrails.com). You can find the source code here: [shakacode/react-webpack-rails-tutorial](https://github.com/shakacode/react-webpack-rails-tutorial).
+
+That being said, the current version will probably keep working, so there's no urgency to upgrade.
+
+## Upgrade Instructions
+
+1. Change your dependency for bootstrap as shown [here](https://github.com/shakacode/bootstrap-loader#usage). Basically, you will want to configure `bootstrap-loader` as an entry point. Or you might configure `bootstrap-loader/extractStyles` as an entry point, as shown [here](https://github.com/shakacode/bootstrap-loader#extractstyles). Note, you no longer specify the name of your bootstrap customization file.
+1. Follow the instructions [here](https://github.com/shakacode/bootstrap-loader#installation) for configuring the npm library for Bootstrap.
+1. If you're using the bootstrap jQuery plugins, configure it like [this](https://github.com/shakacode/bootstrap-loader#jquery).
+1. If you have no customization file, then you're done. 
+1. Otherwise, rename your customization file to `.bootstraprc`. See sample file [.bootstraprc-3-default](https://github.com/shakacode/bootstrap-loader/blob/master/.bootstraprc-3-default) for how to migrate your existing `bootstrap-sass-config` file.
+
+
 bootstrap-sass-loader
 =================
 
