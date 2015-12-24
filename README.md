@@ -27,8 +27,10 @@ That being said, the current version will probably keep working, so there's no u
 1. Otherwise, rename your customization file to `.bootstraprc`. See sample file [.bootstraprc-3-default](https://github.com/shakacode/bootstrap-loader/blob/master/.bootstraprc-3-default) for how to migrate your existing `bootstrap-sass-config` file.
 
 
-bootstrap-sass-loader
+bootstrap-sass-loader (please upgrade to bootstrap-loader)
 =================
+
+[![npm version](https://badge.fury.io/js/bootstrap-sass-loader.svg)](https://badge.fury.io/js/bootstrap-sass-loader)
 
 Bootstrap configuration and loading package for webpack, using the npm packages `bootstrap-sass` and `sass-loader`.
 
