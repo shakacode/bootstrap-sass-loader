@@ -9,7 +9,7 @@ We're moving to a new project name and slightly different file format.
 ## New Locations
 The new npm libs and corresponding github repos are:
 
-1. [boostrap-loader](https://github.com/shakacode/bootstrap-loader)
+1. [bootstrap-loader](https://github.com/shakacode/bootstrap-loader)
 1. [sass-resources-loader](https://github.com/shakacode/sass-resources-loader)
 
 ## New Features
