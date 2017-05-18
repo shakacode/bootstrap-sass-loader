@@ -76,7 +76,7 @@ Usage
 To use the complete bootstrap package including styles and scripts with the default settings:
 
 ``` javascript
-require("bootstrap-sass-loader");
+require("bootstrap-sass");
 ```
 
 The disadvantage to using this setup is that you can't:
